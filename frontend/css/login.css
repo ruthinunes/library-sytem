@@ -1,0 +1,84 @@
+@import url(default.css);
+
+body {
+  background: linear-gradient(
+      rgba(134, 142, 150, 0.4),
+      rgba(134, 142, 150, 0.4)
+    ),
+    url(../images/background.png);
+  background-position: bottom center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login__container {
+  background-color: var(--pure-white-color);
+  border-radius: 0.8rem;
+  padding: 3rem;
+}
+
+.login__form-img {
+  align-self: center;
+  width: 150px;
+  margin-bottom: var(--mb-24);
+}
+
+.login__input {
+  border: 1px solid var(--input-border-color);
+  border-radius: 5px;
+  padding-right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login__input:hover {
+  border-color: var(--primary-color);
+}
+
+.login__input > input {
+  font-size: var(--normal-font-size);
+  border: none;
+}
+
+.login__input,
+input {
+  background-color: var(--input-background-color);
+}
+
+.login__link {
+  font-weight: var(--font-bold);
+  margin-top: -1.5rem;
+  font-size: var(--small-font-size);
+}
+
+.login__link:hover {
+  color: #707070;
+}
+
+button {
+  font-weight: var(--font-bold);
+  font-size: var(--normal-font-size);
+  border-radius: 0.8rem;
+}
+
+@media screen and (min-width: 568px) {
+  .login__container {
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .login__container {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .login__form {
+    margin: 1rem 0;
+  }
+}
