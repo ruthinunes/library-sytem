@@ -1,0 +1,378 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700&display=swap");
+
+:root {
+  --header-height: 4.8rem;
+  --hue-color: 46;
+  --primary-color: hsl(var(--hue-color), 100%, 50%);
+  --background-color: hsl(var(--hue-color), 0%, 96%);
+  --pure-black-color: hsl(var(--hue-color), 0%, 0%);
+  --pure-white-color: hsl(var(--hue-color), 100%, 100%);
+  --primary-text-color: hsl(var(--hue-color), 10%, 23%);
+  --secondary-text-color: hsl(var(--hue-color), 0%, 16%);
+  --input-border-color: hsl(var(--hue-color), 62%, 20%);
+  --input-background-color: hsl(var(--hue-color), 17%, 95%);
+  --block-margin: 0 16rem;
+  --body-font: "Roboto", sans-serif;
+  --big-font-size: 3.2rem;
+  --h1-font-size: 2.4rem;
+  --h2-font-size: 2rem;
+  --h3-font-size: 1.8rem;
+  --normal-font-size: 1.5rem;
+  --small-font-size: 1.3rem;
+  --smaller-font-size: 1.2rem;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  --mb-4: 0.4rem;
+  --mb-8: 0.8rem;
+  --mb-12: 1.2rem;
+  --mb-16: 1.6rem;
+  --mb-24: 2.4rem;
+  --mb-32: 3.2rem;
+  --mb-40: 4rem;
+  --mb-48: 4.8rem;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 4.8rem;
+    --h1-font-size: 3.6rem;
+    --h2-font-size: 2.4rem;
+    --h3-font-size: 2rem;
+    --normal-font-size: 1.6rem;
+    --small-font-size: 1.4rem;
+    --smaller-font-size: 1.3rem;
+  }
+}
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  gap: 2.4rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--font-semi-bold);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input {
+  border: 1px solid var(--input-border-color);
+  padding: 2rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.main {
+  width: 90%;
+  margin-bottom: var(--mb-32);
+  background-color: var(--pure-white-color);
+  border-radius: 5px;
+}
+
+.section {
+  padding: 3.2rem 0;
+}
+
+.container {
+  align-items: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/* buttons */
+
+.button {
+  transition: all 0.3s linear;
+  cursor: pointer;
+  padding: 1.6rem;
+  border-radius: 0.6rem;
+  text-transform: uppercase;
+}
+
+.button--primary {
+  background-color: var(--primary-color);
+}
+
+.button--primary:hover {
+  background-color: var(--pure-black-color);
+  color: var(--pure-white-color);
+}
+
+.button--secondary {
+  border: 1px solid var(--input-border-color);
+  background-color: var(--pure-white-color);
+}
+
+/* filter options */
+.filter__button {
+  border: 1px solid var(--input-border-color);
+  border-radius: 5px;
+  padding: 1.7rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter__button-icon {
+  transition: all 0.5s;
+}
+
+.filter__options {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: none;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #00000033;
+  background-color: white;
+}
+
+.filter__button,
+.filter__options {
+  font-size: var(--small-font-size);
+}
+
+.option {
+  padding: 1rem;
+}
+
+.option:hover {
+  background-color: #edf4fb;
+}
+
+.option,
+.option > label,
+.filter__button {
+  cursor: pointer;
+}
+
+.filter__button-icon.toggle {
+  transform: rotateX(180deg);
+}
+
+.filter__options.active {
+  width: 100%;
+  display: grid;
+}
+
+/* nav header */
+.header {
+  background-color: var(--pure-white-color);
+  width: 100%;
+}
+
+.nav {
+  padding: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  width: 80px;
+}
+
+.nav__button {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.nav__item {
+  padding: 0.5rem 2.5rem;
+}
+
+.nav__menu {
+  position: fixed;
+  top: 60px;
+  visibility: hidden;
+  right: 30px;
+  background-color: var(--background-color);
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.nav__menu:hover {
+  background-color: var(--primary-text-color);
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.nav__icon {
+  width: 20px;
+}
+
+.nav__icon-toggle {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease;
+}
+
+.rotate-icon {
+  transform: rotate(180deg);
+}
+
+.show-menu {
+  visibility: visible;
+}
+/* nav main */
+.nav__main {
+  margin: 2rem 0 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: var(--normal-font-size);
+  height: 22px;
+}
+
+.nav__main_img {
+  width: 7px;
+}
+
+.nav__main_link {
+  color: var(--pure-black-color);
+  opacity: 0.6;
+}
+
+.nav__main_link:hover {
+  border-bottom: 0.6px solid var(--pure-black-color);
+}
+
+.nav__main_title::before {
+  content: "/";
+  margin-right: 6px;
+}
+
+@media screen and (min-width: 375px) {
+  body {
+    gap: 3.2rem;
+  }
+
+  .nav {
+    padding: 2.4rem;
+  }
+
+  .nav__logo {
+    width: 100px;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .flex {
+    gap: 3.2rem;
+  }
+
+  .nav__menu {
+    top: 80px;
+    right: 40px;
+  }
+
+  .nav__button > p {
+    font-size: var(--h3-font-size);
+  }
+
+  .nav__icon {
+    width: auto;
+  }
+
+  .nav__main {
+    font-size: var(--h3-font-size);
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .flex {
+    gap: 4rem;
+  }
+
+  .nav__button {
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .flex {
+    flex-direction: row;
+  }
+
+  .main {
+    width: 95%;
+  }
+
+  .container {
+    min-width: 700px;
+  }
+
+  .nav {
+    padding: 2.4rem 3.2rem;
+  }
+
+  .nav__main {
+    margin: 2.4rem 3.2rem;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .nav {
+    padding: 3.2rem 4rem;
+  }
+
+  .nav__menu {
+    top: 90px;
+    right: 50px;
+  }
+
+  .nav__main_img {
+    width: 9px;
+    margin-right: 0.5rem;
+  }
+
+  .nav__main {
+    margin: 3.2rem 4rem;
+  }
+}
