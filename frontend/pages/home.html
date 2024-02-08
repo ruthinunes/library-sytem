@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <title>Library - Biblioteca Virtual</title>
+  </head>
+
+  <body>
+    <header class="header" id="header">
+      <nav class="nav">
+        <img src="../images/logo.svg" alt="library logo" class="nav__logo" />
+
+        <div class="nav__button" id="navButton">
+          <img
+            src="../images/person-yellow.svg"
+            alt="a yellow icon representing a person"
+            class="nav__icon"
+          />
+          <p id="userNick"></p>
+          <img
+            class="nav__icon-toggle"
+            src="../images/arrow.svg"
+            alt="a arrow down"
+          />
+        </div>
+
+        <div class="nav__menu">
+          <ul class="nav__list">
+            <li class="nav__item" id="navLogout">Sair</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main home" id="home">
+      <div class="home__cards container flex">
+        <div class="card" id="register">
+          <img class="card__icon" src="../images/addCircle-icon.svg" alt="" />
+          <p class="card__title">Cadastrar novo livro</p>
+        </div>
+
+        <div class="card" id="library">
+          <img class="card__icon" src="../images/book-icon.svg" alt="" />
+          <p class="card__title">Biblioteca</p>
+        </div>
+
+        <div class="card" id="history">
+          <img
+            class="card__icon"
+            src="../images/pendingAction-icon.svg"
+            alt=""
+          />
+          <p class="card__title">Histórico de empréstimos</p>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="../js/home.js"></script>
+  </body>
+</html>

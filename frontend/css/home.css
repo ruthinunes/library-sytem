@@ -1,0 +1,73 @@
+@import url(default.css);
+
+.home {
+  padding: 3.2rem 0;
+}
+
+.card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4.8rem;
+  padding: 4.5rem 0.3rem 0.3rem 0.3rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: var(--background-color);
+  width: 70%;
+  max-width: 300px;
+}
+
+.card:hover {
+  background-color: var(--primary-color);
+}
+
+.card__icon {
+  width: 50px;
+}
+
+.card__title {
+  border-radius: 0.3rem;
+  padding: 1.6rem 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--pure-white-color);
+  font-size: var(--normal-font-size);
+}
+
+@media screen and (min-width: 425px) {
+  .home {
+    padding: 4.8rem 0;
+  }
+
+  .card__title {
+    font-size: var(--h3-font-size);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    display: flex;
+    padding: 0;
+  }
+
+  .home__cards {
+    width: 90%;
+    max-width: 800px;
+    justify-content: space-around;
+    height: 75vh;
+    gap: 2.4rem;
+  }
+
+  .card__title {
+    font-size: var(--normal-font-size);
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .card {
+    padding-top: 6.4rem;
+    max-width: 258px;
+  }
+}
