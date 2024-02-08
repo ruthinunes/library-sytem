@@ -11,15 +11,15 @@ const handleButtonClick = () => {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
 
-  setUser(email, pass);
+  setUserNick(email, pass);
 };
 
-const setUser = async (email, pass) => {
+const setUserNick = async (email, pass) => {
   const dataLogin = await fetchDataLogin();
 
   for (i = 0; i < dataLogin.length; i++) {
     if (email == dataLogin[i].email && pass == dataLogin[i].password) {
-      setLocalStorage(dataLogin[i].name);
+      setLocalStorage(dataLogin[i].nick);
       window.open("../pages/home.html", "_self");
       return;
     }
@@ -34,7 +34,7 @@ const fetchDataLogin = async () => {
 };
 
 const setLocalStorage = (user) => {
-  localStorage.setItem("user_name", JSON.stringify(user));
+  localStorage.setItem("user_nick", JSON.stringify(user));
 };
 
 window.onload = setButtonClick;
