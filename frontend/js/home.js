@@ -18,15 +18,19 @@ const setCardsClick = () => {
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      setCardURL(card);
+      handleCardClick(card);
     });
   });
 };
 
-const setCardURL = (card) => {
-  const page = card.id;
+const handleCardClick = (card) => {
+  const cardID = card.id;
 
-  switch (page) {
+  setCardURL(cardID);
+};
+
+const setCardURL = (cardID) => {
+  switch (cardID) {
     case "register":
       window.location.href = "register.html";
       break;
@@ -47,13 +51,15 @@ const setNavClick = () => {
 };
 
 const displayMenu = () => {
-  const navIcon = document.querySelector(".nav__icon-toggle");
   const navList = document.querySelector(".nav__menu");
+  const navIcon = document.querySelector(".nav__icon-toggle");
 
   if (navList.classList.contains("show-menu")) {
-    removeClass(navList, "show-menu"), removeClass(navIcon, "rotate-icon");
+    removeClass(navList, "show-menu");
+    removeClass(navIcon, "rotate-icon");
   } else {
-    addClass(navList, "show-menu"), addClass(navIcon, "rotate-icon");
+    addClass(navList, "show-menu");
+    addClass(navIcon, "rotate-icon");
   }
   setLogout();
 };
