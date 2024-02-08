@@ -1,0 +1,110 @@
+@import url(default.css);
+
+.register__container {
+  padding: 0 2.4rem;
+}
+
+.register__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 90%;
+  position: relative;
+}
+
+.register__inputs:first-of-type {
+  cursor: pointer;
+  color: var(--primary-color);
+  gap: 0.5rem;
+  width: 70%;
+  max-width: 165px;
+  border: 3px dashed var(--primary-color);
+  height: 20rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.register__buttons {
+  margin: 3.2rem auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 300px;
+}
+
+.filter__options {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+textarea {
+  font-family: "Roboto", sans-serif;
+  height: 14rem;
+  padding: 2rem;
+  border-radius: 5px;
+  border: 1px solid var(--input-border-color);
+  width: 100%;
+  resize: none;
+}
+
+input,
+textarea {
+  font-size: var(--small-font-size);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--input-border-color);
+}
+
+button:last-of-type {
+  width: 10.5rem;
+}
+
+@media screen and (min-width: 425px) {
+  input,
+  textarea,
+  .filter__button,
+  .filter__options {
+    font-size: var(--normal-font-size);
+  }
+
+  .input__text {
+    font-size: var(--h3-font-size);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .register__form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .register__content {
+    margin-top: 3.2rem;
+    width: 100%;
+  }
+
+  .register__form {
+    display: grid;
+    max-width: 100%;
+  }
+
+  .register__buttons {
+    margin: 0;
+    justify-self: end;
+    gap: 2.4rem;
+    margin-top: 3.2rem;
+  }
+
+  .register__inputs:first-of-type {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 1055px) {
+  .register__form {
+    width: 950px;
+  }
+}

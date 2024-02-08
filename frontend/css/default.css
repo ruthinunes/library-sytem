@@ -260,7 +260,7 @@ input {
 }
 /* nav main */
 .nav__main {
-  margin: 2rem 0 1rem 2.5rem;
+  margin: 3.2rem 0 3.2rem 3.2rem;
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -292,7 +292,7 @@ input {
   }
 
   .nav__logo {
-    width: 100px;
+    width: 90px;
   }
 
   .section {
@@ -306,10 +306,6 @@ input {
   .nav__menu {
     top: 80px;
     right: 40px;
-  }
-
-  .nav__button > p {
-    font-size: var(--h3-font-size);
   }
 
   .nav__icon {
@@ -337,6 +333,7 @@ input {
   }
 
   .main {
+    min-height: 550px;
     width: 95%;
   }
 
@@ -346,10 +343,6 @@ input {
 
   .nav {
     padding: 2.4rem 3.2rem;
-  }
-
-  .nav__main {
-    margin: 2.4rem 3.2rem;
   }
 }
 

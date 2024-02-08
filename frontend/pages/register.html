@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <title>Library - Biblioteca Virtual</title>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav">
+        <img src="../images/logo.svg" alt="library logo" class="nav__logo" />
+
+        <div class="nav__button" id="navButton">
+          <img
+            src="../images/person-yellow.svg"
+            alt="a yellow icon representing a person"
+            class="nav__icon"
+          />
+          <p id="userNick"></p>
+          <img
+            class="nav__icon-toggle"
+            src="../images/arrow.svg"
+            alt="a arrow down"
+          />
+        </div>
+
+        <div class="nav__menu">
+          <ul class="nav__list">
+            <li class="nav__item" id="navLogout">Sair</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <nav class="nav__main">
+        <img
+          src="../images/chevron-left-icon.svg"
+          alt=""
+          class="nav__main_img"
+        />
+        <a class="nav__main_link" href="home.html">Home</a>
+        <p class="nav__main_title">Cadastrar novo livro</p>
+      </nav>
+      <section class="register section" id="home">
+        <div class="register__container">
+          <form id="registerForm" class="register__form" action="">
+            <div class="register__content container flex">
+              <div class="register__inputs" id="inputFile">
+                <input type="file" name="" class="input__img" hidden />
+                <img
+                  class="input__icon"
+                  src="../images/plusCircle-icon.svg"
+                  alt="Add circle icon"
+                />
+                <p class="input__text">Capa</p>
+                <img id="inputImg" hidden />
+              </div>
+              <div class="register__inputs">
+                <input
+                  type="text"
+                  name=""
+                  id="inputTitle"
+                  placeholder="Título"
+                  required
+                />
+                <textarea
+                  id="inputTextArea"
+                  cols="30"
+                  rows="10"
+                  placeholder="Sinopse"
+                ></textarea>
+              </div>
+              <div class="register__inputs">
+                <input
+                  type="text"
+                  name=""
+                  id="inputAuthor"
+                  placeholder="Autor"
+                  required
+                />
+                <div class="register__filter filter">
+                  <div class="filter__button">
+                    <span class="options__text">Gênero</span>
+                    <img
+                      class="filter__button-icon"
+                      src="../images/poligono-icon.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="filter__options">
+                    <div>
+                      <div class="option">Fantasia</div>
+                      <div class="option">Horror</div>
+                      <div class="option">Romance</div>
+                      <div class="option">Autoajuda</div>
+                      <div class="option">História</div>
+                    </div>
+                    <div>
+                      <div class="option">Ficção Cientifica</div>
+                      <div class="option">Ação e Aventura</div>
+                      <div class="option">Web Marketing</div>
+                      <div class="option">Finanças</div>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="date"
+                  name=""
+                  id="inputDate"
+                  placeholder="Data de entrada"
+                  required
+                />
+              </div>
+            </div>
+            <div class="register__buttons">
+              <button
+                type="button"
+                id="cancelButton"
+                class="button button--secondary"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                id="saveButton"
+                class="button button--primary"
+              >
+                Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="../js/register.js"></script>
+  </body>
+</html>

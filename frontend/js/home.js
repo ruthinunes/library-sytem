@@ -3,16 +3,6 @@ const setUserNick = () => {
   return (document.getElementById("userNick").innerHTML = user);
 };
 
-const setDataBooks = async () => {
-  const res = await fetch("../data.json");
-  const data = await res.json();
-  const dataBooks = data.data.books;
-
-  if ("db_books" in localStorage == false) {
-    localStorage.setItem("db_books", JSON.stringify(dataBooks));
-  }
-};
-
 const setCardsClick = () => {
   const cards = document.querySelectorAll(".card");
 
@@ -24,21 +14,21 @@ const setCardsClick = () => {
 };
 
 const handleCardClick = (card) => {
-  const cardID = card.id;
+  const id = card.id;
 
-  setCardURL(cardID);
+  setCardURL(id);
 };
 
-const setCardURL = (cardID) => {
-  switch (cardID) {
+const setCardURL = (id) => {
+  switch (id) {
     case "register":
-      window.location.href = "register.html";
+      window.location.href = "../pages/register.html";
       break;
     case "library":
-      window.location.href = "library.html";
+      window.location.href = "../pages/library.html";
       break;
     case "history":
-      window.location.href = "history.html";
+      window.location.href = "../pages/history.html";
       break;
   }
 };
@@ -81,12 +71,21 @@ const setLogout = () => {
   });
 };
 
+const setDataBooks = async () => {
+  const res = await fetch("../data.json");
+  const data = await res.json();
+  const dataBooks = data.data.books;
+
+  if ("db_books" in localStorage == false) {
+    localStorage.setItem("db_books", JSON.stringify(dataBooks));
+  }
+};
+
 window.addEventListener("DOMContentLoaded", () => {
   setUserNick();
   setDataBooks();
   setCardsClick();
-  // openMenu();
   setNavClick();
 });
 
-export { setUserNick, setNavClick, setLogout };
+export { setUserNick, setNavClick, addClass, removeClass };
