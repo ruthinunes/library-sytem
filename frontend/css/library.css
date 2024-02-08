@@ -1,0 +1,162 @@
+@import url(default.css);
+@import url(modals.css);
+
+.library__filters {
+  gap: 1.6rem;
+  display: flex;
+  font-size: var(--normal-font-size);
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.filter__input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 2.4rem;
+}
+
+.search__button {
+  padding: 1rem 1.5rem;
+  text-transform: capitalize;
+  position: absolute;
+  top: 11px;
+  right: 10px;
+}
+
+.search__icon {
+  position: absolute;
+  display: none;
+}
+
+.filter__select {
+  position: relative;
+  width: 60%;
+  align-self: center;
+}
+
+.filter__button {
+  color: #adb5bd;
+}
+
+.search__input,
+.filter__button {
+  border-color: #adb5bd;
+}
+
+/* cards */
+.library__content {
+  display: grid;
+  justify-items: center;
+  gap: 3.2rem;
+}
+
+.library__card {
+  padding: 2.4rem 0;
+  cursor: pointer;
+  border-radius: 7px;
+  background-color: var(--background-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 230px;
+  font-weight: var(--font-semi-bold);
+  text-align: center;
+}
+
+.card__content {
+  display: flex;
+  gap: 2.4rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__img {
+  max-width: 80%;
+  height: auto;
+}
+
+.card__title {
+  padding: 0 0.8rem;
+}
+
+.card__data {
+  font-size: var(--small-font-size);
+  text-align: left;
+}
+
+.card__data > p > span {
+  font-weight: 400;
+}
+
+.data__author, .data__genre {
+  margin-bottom: 0.4rem;
+}
+
+@media screen and (min-width: 375px) {
+  .library__filters {
+    gap: 2.4rem;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .library__filters {
+    align-items: center;
+  }
+
+  .filter__input {
+    width: 400px;
+    margin: 0;
+  }
+
+  .filter__select {
+    width: 270px;
+  }
+
+  .library__content {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 4.2rem;
+    row-gap: 4rem;
+    margin: 0 auto;
+  }
+
+  .library__card {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .library__filters {
+    flex-direction: row;
+    margin: 0 auto 4rem auto;
+    padding: 0 4.2rem;
+  }
+
+  .filter__input {
+    width: 60%;
+  }
+
+  .filter__select {
+    width: 30%;
+  }
+
+  .library__content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .library__content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .library__card {
+    padding: 2.4rem 0.8rem 0.8rem 0.8rem;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .library__content {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
