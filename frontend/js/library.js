@@ -1,34 +1,54 @@
+import {
+  setHistoryFilter,
+  insertTableRows,
+  createCells,
+  prevClick,
+} from "./history.js";
 import { setUserNick, setNavClick, addClass, removeClass } from "./home.js";
 import { setOptionsFilterClick } from "./register.js";
 
 // localStorage functions
-const getLocalStorage = (key) => {
-  return JSON.parse(localStorage.getItem(key));
+const getLocalStorage = () => {
+  return JSON.parse(localStorage.getItem("db_books"));
 };
 
-const setLocalStorage = (key, object) => {
-  localStorage.setItem(key, JSON.stringify(object));
+const setLocalStorage = (key, books) => {
+  localStorage.setItem(key, JSON.stringify(books));
 };
 
-// Cards functions
+const updateLocalStorage = (index, book) => {
+  const books = getLocalStorage();
+
+  books.find((item, id) => {
+    if (item.title === book.title) {
+      index = id;
+    }
+  });
+  books[index] = book;
+  setLocalStorage("db_books", books);
+};
+
+// Cards
 const createContent = () => {
-  const books = getLocalStorage("db_books");
-  const container = document.querySelector(".library__content");
+  const books = getLocalStorage();
 
   books.forEach((book) => {
-    createCard(book, container);
+    createCard(book);
   });
+  setCardsClick(books);
 };
 
-const createCard = (book, container) => {
+const createCard = (book) => {
+  const container = document.querySelector(".library__content");
   const div = document.createElement("div");
+
   div.classList.add("library__card");
   div.setAttribute("data-is_active", book.status.isActive);
 
   div.innerHTML = `
     <div class="card__content">
-      <img src="${book.image}" alt="${book.tittle}" class="card__img" />
-      <p class="card__title">${book.tittle}</p>
+      <img src="${book.image}" alt="${book.title}" class="card__img" />
+      <p class="card__title">${book.title}</p>
       <div class="card__data">
       <p class="data__author"><span>${book.author}</span></p>
       <p class="data__genre"><span>${book.genre}</span></p>
@@ -44,11 +64,20 @@ const updateCards = (books) => {
 
   container.innerHTML = "";
   books.forEach((book) => {
-    createCard(book, container);
+    createCard(book);
   });
+  setCardsClick(books);
 };
 
 // *** filters ***
+const setSearchInputEvent = () => {
+  const searchInput = document.getElementById("searchInput");
+
+  searchInput.addEventListener("input", () => {
+    handleSearchText();
+  });
+};
+
 const setSearchButtonClick = () => {
   const searchButton = document.querySelector(".search__button");
 
@@ -61,33 +90,35 @@ const handleSearchText = () => {
   const searchInput = document.getElementById("searchInput");
   const searchText = searchInput.value;
 
-  getSearchFilteredBooks(searchText);
+  if (searchText !== "") {
+    getSearchSortedBooks(searchText);
+  }
 };
 
-const filterBySearch = (text, books) => {
+const sortBySearch = (text, books) => {
   const searchText = text.toLowerCase();
 
   return books.filter((book) => {
-    const byTittle = book.tittle.toLowerCase();
+    const bytitle = book.title.toLowerCase();
     const byAuthor = book.author.toLowerCase();
     const byGenre = book.genre.toLowerCase();
 
     return (
-      byTittle.includes(searchText) ||
+      bytitle.includes(searchText) ||
       byAuthor.includes(searchText) ||
       byGenre.includes(searchText)
     );
   });
 };
 
-const getSearchFilteredBooks = (text) => {
+const getSearchSortedBooks = (text) => {
   const books = getLocalStorage("db_books");
-  const filteredBooks = filterBySearch(text, books);
+  const sortedBooks = sortBySearch(text, books);
 
-  displayFilteredBooks(filteredBooks);
+  displaySortedBooks(sortedBooks);
 };
 
-const displayFilteredBooks = (books) => {
+const displaySortedBooks = (books) => {
   const container = document.querySelector(".library__content");
 
   if (books.length > 0) {
@@ -108,13 +139,13 @@ const setOptionsButtonClick = () => {
 const handleOptionSelected = (event) => {
   const selectedOption = event.target.lastElementChild.textContent;
 
-  filterBytOtpion(selectedOption);
+  sortBytOtpion(selectedOption);
 };
 
-const filterBytOtpion = (selectedOption) => {
-  const filteredBooks = getOpnionBooks(selectedOption);
+const sortBytOtpion = (selectedOption) => {
+  const sortedBooks = getOpnionBooks(selectedOption);
 
-  displayFilteredBooks(filteredBooks);
+  displaySortedBooks(sortedBooks);
 };
 
 const getOpnionBooks = (selectedOption) => {
@@ -122,9 +153,9 @@ const getOpnionBooks = (selectedOption) => {
   const option = setOptionToProperty(selectedOption);
 
   if (option !== "systemEntryDate") {
-    return filterByGenreOrAuthor(books, option);
+    return sortByGenreOrAuthor(books, option);
   } else {
-    return filterByDate(books, option);
+    return sortByDate(books, option);
   }
 };
 
@@ -147,7 +178,7 @@ const setOptionToProperty = (selectedOption) => {
   return prop;
 };
 
-const filterByDate = (books, prop) => {
+const sortByDate = (books, prop) => {
   books.sort((a, b) => {
     const dateA = new Date(a[prop].split("/").reverse().join("-"));
     const dateB = new Date(b[prop].split("/").reverse().join("-"));
@@ -158,7 +189,7 @@ const filterByDate = (books, prop) => {
   return books;
 };
 
-const filterByGenreOrAuthor = (books, prop) => {
+const sortByGenreOrAuthor = (books, prop) => {
   books.sort((a, b) => {
     if (a[prop] < b[prop]) return -1;
     if (a[prop] > b[prop]) return 1;
@@ -167,13 +198,14 @@ const filterByGenreOrAuthor = (books, prop) => {
 };
 
 // ***** modals *******
-const setCardsClick = () => {
+const setCardsClick = (books) => {
   const cards = document.querySelectorAll(".library__card");
 
   cards.forEach((card, index) => {
+    const book = books[index];
     card.addEventListener("click", () => {
       displayModal(".init__modal");
-      insertMainContent(index);
+      insertMainContent(index, book);
     });
   });
 };
@@ -183,6 +215,14 @@ const displayModal = (className) => {
   modal.classList.add("active");
 };
 
+const insertContent = (content, className) => {
+  const modal = document.querySelector(className);
+  const modalContent = content;
+
+  insertAdjacentHTML(modal, "beforeend", modalContent);
+  closeModal(modal);
+};
+
 const closeModal = (modal) => {
   const closeButton = modal.querySelector(".close__modal");
 
@@ -190,14 +230,6 @@ const closeModal = (modal) => {
     modal.classList.remove("active");
     removeContent(modal);
   });
-};
-
-const insertContent = (content, className) => {
-  const modal = document.querySelector(className);
-  const modalContent = content;
-
-  insertAdjacentHTML(modal, "beforeend", modalContent);
-  closeModal(modal);
 };
 
 const removeContent = (modal) => {
@@ -227,7 +259,7 @@ const mainModalContent = (book, index) => {
     </div>
     <div class="modal__description">
       <h2 id="modalTitle" class="modal__title">
-      ${book.tittle}
+      ${book.title}
       </h2>
       <div class="modal__text">
         <h4>Sinopse</h4>
@@ -273,10 +305,9 @@ const mainModalContent = (book, index) => {
 </div>`;
 };
 
-const createMainModal = (index) => {
-  const book = getLocalStorage("db_books")[index];
+const createMainModal = (index, book) => {
   const mainContent = mainModalContent(book, index);
-  const inactiveFooter = inactiveFooterContent(book);
+  const inactiveFooter = inactiveFooterContent(book, index);
 
   if (!book.status.isActive) {
     return mainContent + inactiveFooter;
@@ -285,21 +316,11 @@ const createMainModal = (index) => {
   }
 };
 
-const insertMainContent = (index) => {
-  const mainContent = createMainModal(index);
-  const book = getLocalStorage("db_books")[index];
+const insertMainContent = (index, book) => {
+  const mainContent = createMainModal(index, book);
 
   insertContent(mainContent, ".init__modal");
   setButtonsClick(index, book);
-};
-
-const updateMainModal = (index) => {
-  const modal = document.querySelector(".init__modal");
-  const book = getLocalStorage("db_books")[index];
-
-  modal.innerHTML = createMainModal(index);
-  setButtonsClick(index, book);
-  closeModal(modal);
 };
 
 const setButtonsClick = (index, book) => {
@@ -312,28 +333,36 @@ const setButtonsClick = (index, book) => {
   };
 
   if (!book.status.isActive) {
-    setInactiveButtonsStyle(buttons, index);
+    setInactiveButtonsStyle(buttons, index, book);
   } else {
     buttons.loanButton.addEventListener("click", () => {
       displayModal(".sub__modal");
-      insertLoanContent(index);
+      insertLoanContent(book, index);
     });
 
     buttons.editButton.addEventListener("click", () => {
       setLocalStorage("edit_id", index);
-      window.open("/pages/edit.html", "_self");
+      window.open("../pages/edit.html", "_self");
     });
 
     buttons.inactiveButton.addEventListener("click", () => {
       displayModal(".sub__modal");
-      insertInactiveContent(index);
+      insertInactiveContent(index, book);
     });
 
     buttons.historyButton.addEventListener("click", () => {
       displayModal(".sub__modal");
-      insertHistoryContent(index, book);
+      insertHistoryContent(book);
     });
   }
+};
+
+const updateMainModal = (index, book) => {
+  const modal = document.querySelector(".init__modal");
+
+  modal.innerHTML = createMainModal(index, book);
+  setButtonsClick(index, book);
+  closeModal(modal);
 };
 
 // loan modal section
@@ -386,26 +415,27 @@ const loanModalContent = () => {
 </div>`;
 };
 
-const insertLoanContent = (index) => {
-  const loanContent = loanModalContent(index);
+const insertLoanContent = (book, index) => {
+  const loanContent = loanModalContent();
 
   insertContent(loanContent, ".sub__modal");
-  setLoanButtonClick(index);
+  setLoanButtonClick(book, index);
 };
 
-const setLoanButtonClick = (index) => {
+const setLoanButtonClick = (book, index) => {
   const loanButton = document.querySelector(".sub__modal .loan__button");
 
   loanButton.addEventListener("click", () => {
-    handleLoanData(index);
+    handleLoanData(book, index);
   });
 };
 
-const handleLoanData = (index) => {
+const handleLoanData = (book, index) => {
   const studentName = document.getElementById("name").value;
   const schoolClass = document.getElementById("class").value;
   const withdrawalDate = document.getElementById("withdrawalDate").value;
   const deliveryDate = document.getElementById("deliveryDate").value;
+
   if (
     studentName === "" ||
     schoolClass === "" ||
@@ -420,17 +450,16 @@ const handleLoanData = (index) => {
       withdrawalDate: formatedDate(withdrawalDate),
       deliveryDate: formatedDate(deliveryDate),
     };
-    setLoanedBook(data, index);
+    setLoanedBook(data, book, index);
   }
 };
 
-const setLoanedBook = (data, index) => {
+const setLoanedBook = (data, book, index) => {
   const modal = document.querySelector(".sub__modal");
-  const books = getLocalStorage("db_books");
 
-  books[index].loanHistory.push(data);
+  book.loanHistory.push(data);
 
-  setLocalStorage("db_books", books);
+  updateLocalStorage(index, book);
   alert("Empréstimo registrado com sucesso!");
   clearForm();
   removeContent(modal);
@@ -471,44 +500,43 @@ const inactiveModalContent = () => {
 </div>`;
 };
 
-const insertInactiveContent = (index) => {
+const insertInactiveContent = (index, book) => {
   const inactiveContent = inactiveModalContent();
 
   insertContent(inactiveContent, ".sub__modal");
-  setInactiveButtonClick(index);
+  setInactiveButtonClick(index, book);
 };
 
-const setInactiveButtonClick = (index) => {
+const setInactiveButtonClick = (index, book) => {
   const inactiveButton = document.querySelector(
     ".sub__modal .inactive__button"
   );
 
   inactiveButton.addEventListener("click", () => {
-    handleInactiveData(index);
+    handleInactiveData(index, book);
   });
 };
 
-const handleInactiveData = (index) => {
+const handleInactiveData = (index, book) => {
   const inactiveDescription = document.getElementById("inactiveInput").value;
   if (inactiveDescription === "") {
     alert("Por favor, escreva uma descrição");
   } else {
     const data = inactiveDescription;
-    setInactiveBook(data, index);
+    setInactiveBook(data, book, index);
   }
 };
 
-const setInactiveBook = (data, index) => {
+const setInactiveBook = (data, book, index) => {
   const modal = document.querySelector(".sub__modal");
-  const books = getLocalStorage("db_books");
 
-  books[index].status.description = data;
-  books[index].status.isActive = false;
+  book.status.description = data;
+  book.status.isActive = false;
 
-  setLocalStorage("db_books", books);
+  updateLocalStorage(index, book);
   alert("Livro inativado com suscesso!");
   removeContent(modal);
-  updateMainModal(index);
+  updateMainModal(index, book);
 };
 
 const inactiveFooterContent = (book) => {
@@ -523,7 +551,7 @@ const inactiveFooterContent = (book) => {
 </div>`;
 };
 
-const setInactiveButtonsStyle = (buttons, index) => {
+const setInactiveButtonsStyle = (buttons, index, book) => {
   const inactivateButton = buttons.inactiveButton;
   const loanButtonText = buttons.loanButton.lastElementChild;
 
@@ -535,24 +563,27 @@ const setInactiveButtonsStyle = (buttons, index) => {
   // inactive button
   inactivateButton.innerText = "Ativar";
   inactivateButton.classList.add("active__button");
-  inactivateButton.addEventListener("click", () => {
-    reactiveBook(index);
-    setActiveButtons(buttons);
+  setActiveButtonClick(buttons, index, book);
+  setHistoryButtonClick(buttons, book);
+};
+
+const setActiveButtonClick = (buttons, index, book) => {
+  buttons.inactiveButton.addEventListener("click", () => {
+    reactiveBook(index, book);
+    setActiveButton(buttons);
   });
 };
 
-const reactiveBook = (index) => {
-  const books = getLocalStorage("db_books");
+const reactiveBook = (index, book) => {
+  book.status.description = "";
+  book.status.isActive = true;
 
-  books[index].status.description = "";
-  books[index].status.isActive = true;
-
-  setLocalStorage("db_books", books);
+  updateLocalStorage(index, book);
   alert("Livro reativado!");
-  updateMainModal(index);
+  updateMainModal(index, book);
 };
 
-const setActiveButtons = (buttons) => {
+const setActiveButton = (buttons) => {
   const loanButtonText = buttons.loanButton.lastElementChild;
 
   // loan button
@@ -563,6 +594,13 @@ const setActiveButtons = (buttons) => {
   // inactive button
   buttons.inactiveButton.innerText = "Desativar";
   buttons.inactiveButton.classList.remove("active__button");
+};
+
+const setHistoryButtonClick = (buttons, book) => {
+  buttons.historyButton.addEventListener("click", () => {
+    displayModal(".sub__modal");
+    insertHistoryContent(book);
+  });
 };
 
 // history modal section
@@ -640,16 +678,15 @@ const historyModalContent = () => {
 </div>`;
 };
 
-const insertHistoryContent = (index) => {
-  const historyContent = historyModalContent(index);
+const insertHistoryContent = (book) => {
+  const historyContent = historyModalContent();
 
   insertContent(historyContent, ".sub__modal");
-  getBookHistory(index);
-  setHistoryFilter();
+  getBookHistory(book);
+  setHistoryFilter(book.loanHistory);
 };
 
-const getBookHistory = (index) => {
-  const book = getLocalStorage("db_books")[index];
+const getBookHistory = (book) => {
   const history = book.loanHistory;
 
   if (history.length > 0) {
@@ -680,56 +717,13 @@ const setTableRows = (columns, data) => {
   insertTableRows(columns, cells);
 };
 
-const createCells = (data) => {
-  return `<td class="table__data">
-  <p>${data}</p> </td>`;
-};
-
-const insertTableRows = (columns, cells) => {
-  insertAdjacentHTML(columns.student, "afterend", cells.rowStudent);
-  insertAdjacentHTML(columns.class, "afterend", cells.rowClassRoom);
-  insertAdjacentHTML(columns.withdrawal, "afterend", cells.rowWithdrawal);
-  insertAdjacentHTML(columns.delivery, "afterend", cells.rowDelivery);
-};
-
-// history modal filter
-const setHistoryFilter = () => {
-  const filters = document.querySelectorAll(".table__filter");
-
-  filters.forEach((filter) => {
-    setFilterClick(filter);
-  });
-};
-
-const setFilterClick = (filter) => {
-  const icon = filter.querySelector(".table__icon");
-
-  filter.addEventListener("click", () => {
-    console.log(icon);
-    icon.classList.toggle("toggle");
-    prevClick(filter);
-  });
-};
-
-const prevClick = (filter) => {
-  const filters = document.querySelectorAll(".table__filter");
-
-  filters.forEach((prevFilter) => {
-    const prevIcon = prevFilter.querySelector(".table__icon");
-
-    if (prevFilter !== filter) {
-      prevIcon.classList.remove("toggle");
-    }
-  });
-};
-
 window.addEventListener("DOMContentLoaded", () => {
   createContent();
   setSearchButtonClick();
   setOptionsButtonClick();
-  setCardsClick();
+  setSearchInputEvent();
 });
 
 window.addEventListener("beforeunload", function () {
-  localStorage.removeItem("filtered_books");
+  localStorage.removeItem("sort_books");
 });
