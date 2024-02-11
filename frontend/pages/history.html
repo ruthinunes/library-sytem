@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../images/favicon-32x32.png" />
+    <link rel="stylesheet" href="../css/history.css" />
+    <title>Library - Biblioteca Virtual</title>
+  </head>
+
+  <body>
+    <header class="header" id="header">
+      <nav class="nav">
+        <img src="../images/logo.svg" alt="library logo" class="nav__logo" />
+
+        <div class="nav__button" id="navButton">
+          <img
+            src="../images/person-yellow.svg"
+            alt="a yellow icon representing a person"
+            class="nav__icon"
+          />
+          <p id="userNick"></p>
+          <img
+            class="nav__icon-toggle"
+            src="../images/arrow.svg"
+            alt="a arrow down"
+          />
+        </div>
+
+        <div class="nav__menu">
+          <ul class="nav__list">
+            <li class="nav__item" id="navLogout">Sair</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <nav class="nav__main">
+        <img
+          src="../images/chevron-left-icon.svg"
+          alt=""
+          class="nav__main_img"
+        />
+        <a class="nav__main_link" href="home.html">Home</a>
+        <p class="nav__main_title">Histórico</p>
+      </nav>
+      <section class="history section" id="history">
+        <div class="history__body">
+          <table class="table__history">
+            <tbody class="table__body">
+              <tr class="table__row">
+                <th class="table__head" id="student">
+                  <p class="header__name">Aluno</p>
+                  <div class="table__filter">
+                    <img
+                      class="table__icon"
+                      src="../images/historyIcon.svg"
+                      alt=""
+                    />
+                    <span class="filter__underline"></span>
+                  </div>
+                </th>
+              </tr>
+              <tr class="table__row">
+                <th class="table__head" id="class">
+                  <p class="header__name">Turma</p>
+                  <div class="table__filter">
+                    <img
+                      class="table__icon"
+                      src="../images/historyIcon.svg"
+                      alt=""
+                    />
+                    <span class="filter__underline"></span>
+                  </div>
+                </th>
+              </tr>
+              <tr class="table__row">
+                <th class="table__head" id="book">
+                  <p class="header__name">Livro</p>
+                  <div class="table__filter">
+                    <img
+                      class="table__icon"
+                      src="../images/historyIcon.svg"
+                      alt=""
+                    />
+                    <span class="filter__underline"></span>
+                  </div>
+                </th>
+              </tr>
+              <tr class="table__row">
+                <th class="table__head" id="withdrawal">
+                  <p class="header__name">Retirada</p>
+                  <div class="table__filter">
+                    <img
+                      class="table__icon"
+                      src="../images/historyIcon.svg"
+                      alt=""
+                    />
+                    <span class="filter__underline"></span>
+                  </div>
+                </th>
+              </tr>
+              <tr class="table__row">
+                <th class="table__head" id="delivery">
+                  <p class="header__name">Entrega</p>
+                  <div class="table__filter">
+                    <img
+                      class="table__icon"
+                      src="../images/historyIcon.svg"
+                      alt=""
+                    />
+                    <span class="filter__underline"></span>
+                  </div>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="../js/history.js"></script>
+  </body>
+</html>

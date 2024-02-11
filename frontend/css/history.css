@@ -1,0 +1,34 @@
+@import url(default.css);
+@import url(modals.css);
+
+.history__body {
+  padding: 0 1.6rem;
+}
+
+.filter__underline {
+  width: 50px;
+}
+
+.table__icon {
+  transition: all 0.5s;
+}
+
+.toggle {
+  transform: rotateX(180deg);
+}
+
+@media screen and (min-width: 500px) {
+  .table__data {
+    height: 6rem;
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 689px) {
+  .history__body {
+    padding: 0 3.2rem;
+  }
+  .table__data {
+    font-size: 15px;
+  }
+}
