@@ -253,6 +253,14 @@ textarea {
   cursor: pointer;
 }
 
+.table__icon {
+  transition: all 0.5s;
+}
+
+.toggle {
+  transform: rotateX(180deg);
+}
+
 .table__data {
   text-align: center;
   display: flex;
