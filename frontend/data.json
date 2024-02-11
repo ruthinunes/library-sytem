@@ -22,7 +22,7 @@
     ],
     "books": [
       {
-        "tittle": "A revolução dos bichos",
+        "title": "A revolução dos bichos",
         "author": "George Orwell",
         "genre": "Ficção Cientifica",
         "status": {
@@ -35,7 +35,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Ansiedade: Como enfrentar o mal do século",
+        "title": "Ansiedade: Como enfrentar o mal do século",
         "author": "Augusto Cury",
         "genre": "Autoajuda",
         "status": {
@@ -48,7 +48,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Gatilhos Mentais",
+        "title": "Gatilhos Mentais",
         "author": "Gustavo Ferreira",
         "genre": "Web Marketing",
         "status": {
@@ -61,7 +61,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Hereges de Duna",
+        "title": "Hereges de Duna",
         "author": "Frank Herbert",
         "genre": "Ficção Cientifica",
         "status": {
@@ -99,7 +99,7 @@
         ]
       },
       {
-        "tittle": "Histórias Para Aquecer o Coração",
+        "title": "Histórias Para Aquecer o Coração",
         "author": "Jack Canfield",
         "genre": "Autoajuda",
         "status": {
@@ -112,7 +112,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Mais Esperto que o Diabo",
+        "title": "Mais Esperto que o Diabo",
         "author": "Napoleon Hill",
         "genre": "Autoajuda",
         "status": {
@@ -138,7 +138,7 @@
         ]
       },
       {
-        "tittle": "Mindset",
+        "title": "Mindset",
         "author": "Carol S. Dweck",
         "genre": "Finanças",
         "status": {
@@ -151,7 +151,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "O homem mais rico da Babilônia",
+        "title": "O homem mais rico da Babilônia",
         "author": "George S Clason",
         "genre": "Historia",
         "status": {
@@ -164,7 +164,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "O milagre da manhã",
+        "title": "O milagre da manhã",
         "author": "Hal Elrod",
         "genre": "Autoajuda",
         "status": {
@@ -177,7 +177,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "O poder da autorresponsabilidade",
+        "title": "O poder da autorresponsabilidade",
         "author": "Paulo Vieira",
         "genre": "Autoajuda",
         "status": {
@@ -190,7 +190,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Os segredos da mente milionária",
+        "title": "Os segredos da mente milionária",
         "author": "T. Harv Eker",
         "genre": "Finanças",
         "status": {
@@ -203,7 +203,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Pai Rico, Pai Pobre",
+        "title": "Pai Rico, Pai Pobre",
         "author": "Robert T. Kiyosaki",
         "genre": "Finanças",
         "status": {
@@ -216,7 +216,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Quem pensa enriquece",
+        "title": "Quem pensa enriquece",
         "author": "Napoleon Hill",
         "genre": "Finanças",
         "status": {
@@ -229,7 +229,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Sapiens",
+        "title": "Sapiens",
         "author": "Yuval Noah Harari",
         "genre": "Historia",
         "status": {
@@ -242,7 +242,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Trabalhe 4 horas por semana",
+        "title": "Trabalhe 4 horas por semana",
         "author": "Timothy Ferriss",
         "genre": "Autoajuda",
         "status": {
@@ -255,7 +255,7 @@
         "loanHistory": []
       },
       {
-        "tittle": "Trilogia da Fundação - Deluxe",
+        "title": "Trilogia da Fundação - Deluxe",
         "author": "Isaac Asimov",
         "genre": "Ficção Cientifica",
         "status": {
