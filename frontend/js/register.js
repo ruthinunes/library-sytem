@@ -8,11 +8,31 @@ const setLocalStorage = (book) => {
   return localStorage.setItem("db_books", JSON.stringify(book));
 };
 
-const updateLocalStorage = (book) => {
+const updateLocalStorage = (newBook) => {
   const books = getLocalStorage();
-  books.push(book);
-  setLocalStorage(books);
+
+  setPlaceBook(newBook, books);
 };
+
+const setPlaceBook = (newBook, books) => {
+ const insertionIndex = setInsertIndex(newBook, books);
+ const updatedBooks = placeBook(books, insertionIndex, newBook);
+
+ setLocalStorage(updatedBooks);
+}
+
+const setInsertIndex = (newBook, books) => {
+  return books.findIndex((book) => newBook.tittle < book.tittle);
+}
+
+const placeBook = (books, insertionIndex, newBook) => {
+  const beforeInsertion = books.slice(0, insertionIndex);
+  const afterInsertion = books.slice(insertionIndex);
+
+  const updatedBooks = beforeInsertion.concat(newBook, afterInsertion)
+
+  return updatedBooks;
+}
 
 const setImgUploadClick = () => {
   const button = document.querySelector("#inputFile");
@@ -139,6 +159,7 @@ const handleFormData = () => {
 };
 
 const setSaveBook = (form) => {
+  saveBook(form);
   if (isFormFilled(form)) {
     saveBook(form);
   } else {
@@ -147,10 +168,10 @@ const setSaveBook = (form) => {
 };
 
 const saveBook = (form) => {
-  const book = createBook(form);
+  const newBook = createBook(form);
 
   setAttribute(form.imgInput, "alt", form.title);
-  updateLocalStorage(book);
+  updateLocalStorage(newBook);
   alert("Livro salvo com suscesso!!");
   clearForm();
 };
