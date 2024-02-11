@@ -22,7 +22,7 @@ const setPlaceBook = (newBook, books) => {
 }
 
 const setInsertIndex = (newBook, books) => {
-  return books.findIndex((book) => newBook.tittle < book.tittle);
+  return books.findIndex((book) => newBook.title < book.title);
 }
 
 const placeBook = (books, insertionIndex, newBook) => {
@@ -159,7 +159,6 @@ const handleFormData = () => {
 };
 
 const setSaveBook = (form) => {
-  saveBook(form);
   if (isFormFilled(form)) {
     saveBook(form);
   } else {
@@ -178,7 +177,7 @@ const saveBook = (form) => {
 
 const createBook = (form) => {
   const book = {
-    tittle: form.title,
+    title: form.title,
     author: form.author,
     genre: form.option,
     status: {
