@@ -137,7 +137,7 @@ const setOptionsButtonClick = () => {
 };
 
 const handleOptionSelected = (event) => {
-  const selectedOption = event.target.lastElementChild.textContent;
+  const selectedOption = event.target.textContent;
 
   sortBytOtpion(selectedOption);
 };
