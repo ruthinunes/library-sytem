@@ -14,34 +14,53 @@
   </head>
 
   <body>
-    <main class="login__container">
-      <form class="login__form flex" id="loginForm">
+    <aside class="report">
+      <div class="report__header">
+        <p>To login use:</p>
         <img
-          class="login__form-img"
-          src="frontend//images/logo.svg"
-          alt="library logo"
+          src="/frontend/images/report-icon.svg"
+          alt="an x icon"
+          class="report__close"
+          id="closeReport"
         />
-        <div class="login__content flex">
-          <div class="login__input">
-            <input type="email" id="email" placeholder="E-mail" />
-            <img
-              class="login__input-icon"
-              src="./frontend/images/email-icon.svg"
-              alt="envelope icon"
-            />
+      </div>
+
+      <div class="report__body">
+        email: admin@admin.com.br - senha: admin123<br />
+        email: gx2tec@gx2.com.br - senha: gx2@123
+      </div>
+    </aside>
+
+    <main class="main__login">
+      <section class="login__container">
+        <form class="login__form flex" id="loginForm">
+          <img
+            class="login__form-img"
+            src="frontend//images/logo.svg"
+            alt="library logo"
+          />
+          <div class="login__content flex">
+            <div class="login__input">
+              <input type="email" id="email" placeholder="E-mail" />
+              <img
+                class="login__input-icon"
+                src="./frontend/images/email-icon.svg"
+                alt="envelope icon"
+              />
+            </div>
+            <div class="login__input">
+              <input type="password" id="password" placeholder="Senha" />
+              <img
+                class="login__input-icon"
+                src="./frontend/images/senha-icon.svg"
+                alt="padlock icon"
+              />
+            </div>
           </div>
-          <div class="login__input">
-            <input type="password" id="password" placeholder="Senha" />
-            <img
-              class="login__input-icon"
-              src="./frontend/images/senha-icon.svg"
-              alt="padlock icon"
-            />
-          </div>
-        </div>
-        <a class="login__link" href="#">Esqueci minha senha</a>
-        <button id="formButton" class="button button--primary">Entrar</button>
-      </form>
+          <a class="login__link" href="#">Esqueci minha senha</a>
+          <button id="formButton" class="button button--primary">Entrar</button>
+        </form>
+      </section>
     </main>
     <script type="module" src="app.js"></script>
   </body>

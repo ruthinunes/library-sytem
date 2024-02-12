@@ -37,4 +37,16 @@ const setLocalStorage = (user) => {
   localStorage.setItem("user_nick", JSON.stringify(user));
 };
 
-window.onload = setButtonClick;
+const setCloseReport = () => {
+  const closeButton = document.querySelector(".report__close");
+  const report = document.querySelector(".report");
+
+  closeButton.addEventListener("click", () => {
+    report.style.display = "none";
+  });
+};
+
+window.onload = () => {
+  setCloseReport();
+  setButtonClick();
+};
