@@ -66,7 +66,7 @@ const setLogout = () => {
   const navLogout = document.getElementById("navLogout");
 
   navLogout.addEventListener("click", () => {
-    window.location.href = "../pages/login.html";
+    window.location.href = "../../index.html";
     localStorage.clear();
   });
 };
