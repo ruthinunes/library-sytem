@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/frontend/images/favicon-32x32.png" />
+    <link rel="stylesheet" href="/frontend/css/login.css" />
+    <title>Library - Virtual Library</title>
+  </head>
+
+  <body>
+    <main class="login__container">
+      <form class="login__form flex" id="loginForm">
+        <img
+          class="login__form-img"
+          src="frontend//images/logo.svg"
+          alt="library logo"
+        />
+        <div class="login__content flex">
+          <div class="login__input">
+            <input type="email" id="email" placeholder="E-mail" />
+            <img
+              class="login__input-icon"
+              src="/frontend/images/email-icon.svg"
+              alt="envelope icon"
+            />
+          </div>
+          <div class="login__input">
+            <input type="password" id="password" placeholder="Senha" />
+            <img
+              class="login__input-icon"
+              src="/frontend/images/senha-icon.svg"
+              alt="padlock icon"
+            />
+          </div>
+        </div>
+        <a class="login__link" href="#">Esqueci minha senha</a>
+        <button id="formButton" class="button button--primary">Entrar</button>
+      </form>
+    </main>
+    <script type="text/javascript" src="frontend/js/login.js"></script>
+  </body>
+</html>

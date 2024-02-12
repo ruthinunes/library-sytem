@@ -20,7 +20,7 @@ const setUserNick = async (email, pass) => {
   for (i = 0; i < dataLogin.length; i++) {
     if (email == dataLogin[i].email && pass == dataLogin[i].password) {
       setLocalStorage(dataLogin[i].nick);
-      window.open("../pages/home.html", "_self");
+      window.open("frontend/pages/home.html", "_self");
       return;
     }
   }
@@ -28,7 +28,7 @@ const setUserNick = async (email, pass) => {
 };
 
 const fetchDataLogin = async () => {
-  const res = await fetch("../data.json");
+  const res = await fetch("frontend/data.json");
   const data = await res.json();
   return data.data.login;
 };
