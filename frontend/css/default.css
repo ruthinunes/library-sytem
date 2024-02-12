@@ -92,7 +92,12 @@ img {
   height: auto;
 }
 
-input, input[type="date"]  {
+input[type="date"] {
+  -webkit-appearance: none;
+}
+
+input,
+input[type="date"] {
   border: 1px solid var(--input-border-color);
   padding: 2rem;
   border-radius: 5px;
