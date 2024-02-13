@@ -1,19 +1,15 @@
-Criei um sistema de livros e acabei de terminar e gostaria de uma ajuda com o redme.
-Vou te enviar um texto que escrevi e vc bola algo legal para colocar no redme do repositorio.
-Depois preciso algo para compartilhar no meu perfil do linkedin. Para o redme desenvolva
-algo mais profissional e para o linkedin pode ir um pouco alem envolvendo algo sentimental.
-Aqui esta o texto: 
+#Library System
+This is a project developed during a bootcamp at GX2 Tec, refactored after 2 years using HTML, CSS and Javascript. It's a library system where you can add a book to the system, edit, desactivate, and view its history. All of this is achieved using local storage.
+You can check out the project here: [library-system](https://ruthinunes.github.io/library-sytem/)
 
-Esse é um projeto de um bootcamp da GX2 Tec, refatorado depois de 2 anos.
-É um sistema de biblioteca onde é possivel incluir um livro no sistema, editar, 
-desativar e visualizar seu historico. Tudo isso usando o localstorage.
-Lembro que foi um desafio muito grande na epoca, o espirito de impostor me dominada.
-Mas eu sempre curti quebra-cabecas entao sabia que um hr eu ia voltar e montar peca
-por peca até eu ver que tudo estava bem encaixado. Esse dia chegooooou!!!!!!
-Tentei deixar o mais claro e limpo possivel e olhando pro codigo anterior.... CARACCAAAAA PAMELA,
-que evolucao!!
-Finalmente consegui ver a importancia de um codigo limpo. 
-No decorrer do desenvolvimento, tive que ir ajustando e 
-adicionando as coisas e tudo me pareceu fluir naturalmente. Um ajuste aqui, outro ali e pinba...
-funcoes funcionando como esperado, faceis de entender e de simples. Orgulho me define....
-Recrutadores... EU TO PRONTA :)
+##Motivation
+At the time, this project presented a significant challenge, and imposter syndrome often loomed over me. However, I've always enjoyed solving puzzles, so I knew that eventually, I would return to piece everything together until I saw that everything fit perfectly. That day has finally arrived!
+
+##Evolution
+I made a concerted effort to make the code as clear and clean as possible, and looking back at the previous version... Wow! What an evolution, Pamela! I finally understand the importance of clean code.
+
+##Development Journey
+Throughout the development process, I found myself making adjustments and additions, and everything seemed to flow naturally. A tweak here, another there, and boom... functions were working as expected, easy to understand, and simple. I'm filled with pride.
+
+#Ready for the Next Step
+To recruiters out there, I'm ready for the next challenge! 😊
