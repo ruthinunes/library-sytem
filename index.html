@@ -16,7 +16,7 @@
   <body>
     <aside class="report">
       <div class="report__header">
-        <p>To login use:</p>
+        <p>Click to copy login :</p>
         <img
           src="./frontend/images/report-icon.svg"
           alt="an x icon"
@@ -24,12 +24,20 @@
           id="closeReport"
         />
       </div>
-
       <div class="report__body">
-        email: admin@admin.com.br - senha: admin123<br />
-        email: gx2tec@gx2.com.br - senha: gx2@123
+        <div class="report__body">
+          <p>
+            E-mail: <span class="copy">admin@admin.com.br</span> - Senha:
+            <span class="copy">admin123</span>
+          </p>
+          <p>
+            E-mail: <span class="copy">gx2tec@gx2.com.br</span> - Senha:
+            <span class="copy">gx2@123</span>
+          </p>
+        </div>
       </div>
     </aside>
+    <div class="report__modal">Copied</div>
 
     <main class="main__login">
       <section class="login__container">

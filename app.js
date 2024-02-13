@@ -46,7 +46,40 @@ const setCloseReport = () => {
   });
 };
 
-window.onload = () => {
+const setReportClick = () => {
+  const copyElements = document.querySelectorAll(".copy");
+
+  copyElements.forEach((element) => {
+    element.addEventListener("click", () => handleReportClick(element));
+  });
+};
+
+const handleReportClick = (element) => {
+  const text = element.textContent;
+
+  copyToClipboard(text);
+};
+
+const copyToClipboard = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    displayReportModal();
+  } catch (err) {
+    console.error("Failed to copy: ", err);
+  }
+};
+
+const displayReportModal = () => {
+  const modal = document.querySelector(".report__modal");
+
+  modal.style.opacity = "1";
+  setTimeout(() => {
+    modal.style.opacity = "0";
+  }, 700);
+};
+
+window.addEventListener("DOMContentLoaded", function () {
+  setReportClick();
   setCloseReport();
   setButtonClick();
-};
+});

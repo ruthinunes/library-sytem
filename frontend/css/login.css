@@ -9,16 +9,13 @@ body {
   background-position: bottom center;
   background-size: cover;
   height: 100vh;
-  position: relative;
 }
 
 .report {
   position: absolute;
   top: 5px;
   color: aliceblue;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: hsla(0, 0%, 13%, 0.8);
-  font-size: var(--small-font-size);
   border-radius: 10px;
   padding: 1.6rem;
 }
@@ -32,6 +29,33 @@ body {
 .report__close {
   width: 10px;
   cursor: pointer;
+}
+
+.report__body > p:first-of-type {
+  margin-bottom: 0.8rem;
+}
+
+.copy:hover {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.report__modal {
+  position: absolute;
+  top: 20px;
+  background-color: hsla(46, 100%, 50%, 0.9);
+  padding: 0.8rem 1.6rem;
+  color: hsla(0, 0%, 0%, 0.8);
+  text-align: center;
+  opacity: 0;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.report,
+.report__modal {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: var(--small-font-size);
 }
 
 .login__container {
