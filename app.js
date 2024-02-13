@@ -37,19 +37,30 @@ const setLocalStorage = (user) => {
   localStorage.setItem("user_nick", JSON.stringify(user));
 };
 
-const setCloseReport = () => {
-  const closeButton = document.querySelector(".report__close");
-  const report = document.querySelector(".report");
+// report modal
+const setReportModal = () => {
+  const copyElements = document.querySelectorAll(".copy");
 
-  closeButton.addEventListener("click", () => {
-    report.style.display = "none";
+  setCopyMouseOver(copyElements);
+  setCopyMouseLeave(copyElements);
+  setCopyClick(copyElements);
+  setCloseReport();
+};
+
+const setCopyMouseOver = (elements) => {
+  elements.forEach((element) => {
+    element.addEventListener("mouseover", () => displayCopyMessage("Copy"));
   });
 };
 
-const setReportClick = () => {
-  const copyElements = document.querySelectorAll(".copy");
+const setCopyMouseLeave = (elements) => {
+  elements.forEach((element) => {
+    element.addEventListener("mouseleave", () => removeCopyMessage());
+  });
+};
 
-  copyElements.forEach((element) => {
+const setCopyClick = (elements) => {
+  elements.forEach((element) => {
     element.addEventListener("click", () => handleReportClick(element));
   });
 };
@@ -63,23 +74,38 @@ const handleReportClick = (element) => {
 const copyToClipboard = async (text) => {
   try {
     await navigator.clipboard.writeText(text);
-    displayReportModal();
+    displayCopyMessage("Copied!");
+    setTimeout(() => {
+      removeCopyMessage();
+    }, 700);
   } catch (err) {
     console.error("Failed to copy: ", err);
   }
 };
 
-const displayReportModal = () => {
+const displayCopyMessage = (text) => {
   const modal = document.querySelector(".report__modal");
 
   modal.style.opacity = "1";
-  setTimeout(() => {
-    modal.style.opacity = "0";
-  }, 700);
+  modal.innerHTML = text;
+};
+
+const removeCopyMessage = () => {
+  const modal = document.querySelector(".report__modal");
+
+  modal.style.opacity = "0";
+};
+
+const setCloseReport = () => {
+  const closeButton = document.querySelector(".report__close");
+  const report = document.querySelector(".report");
+
+  closeButton.addEventListener("click", () => {
+    report.style.display = "none";
+  });
 };
 
 window.addEventListener("DOMContentLoaded", function () {
-  setReportClick();
-  setCloseReport();
+  setReportModal();
   setButtonClick();
 });

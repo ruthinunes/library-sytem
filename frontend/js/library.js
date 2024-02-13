@@ -563,6 +563,7 @@ const setInactiveButtonsStyle = (buttons, index, book) => {
   // inactive button
   inactivateButton.innerText = "Ativar";
   inactivateButton.classList.add("active__button");
+
   setActiveButtonClick(buttons, index, book);
   setHistoryButtonClick(buttons, book);
 };
