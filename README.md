@@ -9,7 +9,7 @@ At the time, this project presented a significant challenge, and imposter syndro
 
 ### Evolution
 
-I made a concerted effort to make the code as clear and clean as possible, and looking back at the previous version... Wow! What an evolution, Pamela! I finally understand the importance of clean code.
+I made a concerted effort to make the code as clear and clean as possible, and looking back at the previous version... Wow! What an evolution, Ruthi! I finally understand the importance of clean code.
 
 ### Development Journey
 
