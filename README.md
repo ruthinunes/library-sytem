@@ -15,5 +15,6 @@ I made a concerted effort to make the code as clear and clean as possible, and l
 
 Throughout the development process, I found myself making adjustments and additions, and everything seemed to flow naturally. A tweak here, another there, and boom... functions were working as expected, easy to understand, and simple. I'm filled with pride.
 
-#Ready for the Next Step
+### Ready for the Next Step
+
 To recruiters out there, I'm ready for the next challenge! 😊
